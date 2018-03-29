@@ -13,13 +13,13 @@ class Post extends Model
     //pertence aun usuario
     public function user()
     {
-        return $this->belongsTo(User::tag);
+        return $this->belongsTo(User::class);
     }
 
     //pertenece a una categoria
     public function category()
     {
-        return $this->belongsTo(Category::tag);
+        return $this->belongsTo(Category::class);
     }
 
     //tiene y pertenece a muchos tags
