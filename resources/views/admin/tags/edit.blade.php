@@ -14,7 +14,7 @@
 
 
                     <div class="panel-body">
-                        {!! Form::model($tag, ['route' => ['tags.store', $tag->id], 'method' => 'PUT']) !!}
+                        {!! Form::model($tag, ['route' => ['tags.update', $tag->id], 'method' => 'PUT']) !!}
                         @include('admin.tags.partials.form')
                         {!! Form::close() !!}
                     </div>

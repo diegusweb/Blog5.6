@@ -105,5 +105,10 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
