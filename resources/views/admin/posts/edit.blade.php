@@ -14,7 +14,7 @@
 
 
                     <div class="panel-body">
-                        {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
+                        {!! Form::model($post, ['route' => ['posts.update', 'files' => true, $post->id], 'method' => 'PUT']) !!}
                         @include('admin.posts.partials.form')
                         {!! Form::close() !!}
                     </div>

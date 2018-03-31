@@ -9,6 +9,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -57,8 +58,17 @@ class PostController extends Controller
     public function store(PostStoreRequest $request)
     {
         $tag = Post::create($request->all());
+        //Image
+        if($request->file('file')){
+            $path = Storage::disk('public')->put('image', $request->file('file'));
+            $tag->fill(['file' => asset($path)])->save();
+        }
+
+        //TAG, sync que se csincronize entre post y etiquetas
+        $tag->tags()->sync($request->get('tags'));
+
         return redirect()->route('posts.edit', $tag->id)
-            ->with('info', 'Entrada creada con exito');
+        ->with('info', 'Entrada creada con exito');
     }
 
     /**
@@ -101,6 +111,16 @@ class PostController extends Controller
         $posts = Post::find($id);
 
         $posts->fill($request->all())->save();
+
+        //Image
+        if($request->file('file')){
+            $path = Storage::disk('public')->put('image', $request->file('file'));
+            $posts->fill(['file' => asset($path)])->save();
+        }
+
+        //TAG, sync que se csincronize entre post y etiquetas
+        $posts->tags()->sync($request->get('tags'));
+
 
         return redirect()->route('posts.edit', $posts->id)
             ->with('info', 'Entrada actualizada con exito');
