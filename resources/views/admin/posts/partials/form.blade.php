@@ -14,7 +14,33 @@
     {{ Form::label('slug', 'URL amigable') }}
     {{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug']) }}
 </div>
-
+<div class="form-group">
+    {{ Form::label('status', 'Estado: ') }}
+   <label>
+       {{ Form::radio('status', 'PUBLISHED') }} Publicado
+   </label>
+    <label>
+        {{ Form::radio('status', 'DRAFT') }} Borrador
+    </label>
+</div>
+<div class="form-group">
+    {{ Form::label('tags', 'Etiquetas') }}
+    <div>
+        @foreach($tags as $tag)
+            <label for="">
+                {{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->name }}
+            </label>
+            @endforeach
+    </div>
+</div>
+<div class="form-group">
+    {{ Form::label('excerpt', 'Extracto') }}
+    {{ Form::textarea('excerpt', null, ['class' => 'form-control', 'rows' => '2']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('file', 'imagen') }}
+    {{ Form::file('file') }}
+</div>
 <div class="form-group">
     {{ Form::label('body', 'Descripcion') }}
     {{ Form::textarea('body', null, ['class' => 'form-control']) }}
