@@ -16,7 +16,7 @@
                     <div class="panel-body">
                         <p><strong>Nombre</strong> {{ $post->name }}</p>
                         <p><strong>Slug</strong> {{ $post->slug }}</p>
-                        <p><strong>Contenedor</strong> {{ $post->body }}</p>
+                        <p><strong>Contenedor</strong> {!! $post->body !!}</p>
                     </div>
                 </div>
             </div>

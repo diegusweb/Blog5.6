@@ -51,15 +51,21 @@
 </div>
 
 @section('scripts')
-
     <script src="{{ asset('vendor/stringToSlug/jquery.stringToSlug.min.js') }}"></script>
+    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
     <script>
         $(document).ready(function(){
-            $("#name, #slug").stringToSlug({
+
+            CKEDITOR.config.height = 400;
+            CKEDITOR.config.width = 'auto';
+
+            CKEDITOR.replace('body');
+
+            $('#name, #slug').stringToSlug({
                 callback: function (text) {
-                    $("#slug").val(text);
+                    $('#slug').val(text);
                 }
-            })
+            });
         });
     </script>
 @endsection
