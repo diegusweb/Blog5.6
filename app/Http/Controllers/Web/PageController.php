@@ -17,7 +17,7 @@ class PageController extends Controller
 
     public function post($slug){
         $post = Post::where('slug', $slug)->first();
-
+//dd($post->comments);
         return view('web.post', compact('post'));
     }
 

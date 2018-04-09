@@ -25,6 +25,20 @@
                                 {{ $tag->name }}
                             </a>
                         @endforeach
+                            <p>Comentarios</p>
+                            @if(count($post->comments) > 0)
+                                @foreach($post->comments as $tcom)
+                                    <hr>
+                                    <p>Titulo: {{ $tcom->title }}</p>
+                                    <p>Comentario: {{ $tcom->comment }}</p>
+                                @endforeach
+
+                            @else
+                                Sin Comentarios
+                            @endif
+
+
+
                     </div>
                 </div>
 
