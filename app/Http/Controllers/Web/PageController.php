@@ -17,7 +17,6 @@ class PageController extends Controller
 
     public function post($slug){
         $post = Post::where('slug', $slug)->first();
-//dd($post->comments);
         return view('web.post', compact('post'));
     }
 
@@ -36,7 +35,7 @@ class PageController extends Controller
 
     public function tag($slug)
     {
-        //whereHas = consigueme los
+        //whereHas = consigueme los.......
         $posts = Post::whereHas('tags', function ($query) use($slug){
             $query->where('slug', $slug);
         })
